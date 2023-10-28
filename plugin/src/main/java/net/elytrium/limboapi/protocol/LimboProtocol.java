@@ -93,24 +93,24 @@ public class LimboProtocol {
       LIMBO_STATE_REGISTRY = (StateRegistry) UNSAFE.allocateInstance(StateRegistry.class);
 
       VERSIONS_GETTER = MethodHandles.privateLookupIn(StateRegistry.PacketRegistry.class, MethodHandles.lookup())
-              .findGetter(StateRegistry.PacketRegistry.class, "versions", Map.class);
+          .findGetter(StateRegistry.PacketRegistry.class, "versions", Map.class);
       VERSIONS_FIELD = StateRegistry.PacketRegistry.class.getDeclaredField("versions");
       VERSIONS_FIELD.setAccessible(true);
 
       PACKET_ID_TO_SUPPLIER_GETTER = MethodHandles.privateLookupIn(StateRegistry.PacketRegistry.ProtocolRegistry.class, MethodHandles.lookup())
-              .findGetter(StateRegistry.PacketRegistry.ProtocolRegistry.class, "packetIdToSupplier", IntObjectMap.class);
+          .findGetter(StateRegistry.PacketRegistry.ProtocolRegistry.class, "packetIdToSupplier", IntObjectMap.class);
       PACKET_ID_TO_SUPPLIER_FIELD = StateRegistry.PacketRegistry.ProtocolRegistry.class.getDeclaredField("packetIdToSupplier");
       PACKET_ID_TO_SUPPLIER_FIELD.setAccessible(true);
 
       PACKET_CLASS_TO_ID_GETTER = MethodHandles.privateLookupIn(StateRegistry.PacketRegistry.ProtocolRegistry.class, MethodHandles.lookup())
-              .findGetter(StateRegistry.PacketRegistry.ProtocolRegistry.class, "packetClassToId", Object2IntMap.class);
+          .findGetter(StateRegistry.PacketRegistry.ProtocolRegistry.class, "packetClassToId", Object2IntMap.class);
       PACKET_CLASS_TO_ID_FIELD = StateRegistry.PacketRegistry.ProtocolRegistry.class.getDeclaredField("packetClassToId");
       PACKET_CLASS_TO_ID_FIELD.setAccessible(true);
 
       CLIENTBOUND_REGISTRY_GETTER = MethodHandles.privateLookupIn(StateRegistry.class, MethodHandles.lookup())
-              .findGetter(StateRegistry.class, "clientbound", StateRegistry.PacketRegistry.class);
+          .findGetter(StateRegistry.class, "clientbound", StateRegistry.PacketRegistry.class);
       SERVERBOUND_REGISTRY_GETTER = MethodHandles.privateLookupIn(StateRegistry.class, MethodHandles.lookup())
-              .findGetter(StateRegistry.class, "serverbound", StateRegistry.PacketRegistry.class);
+          .findGetter(StateRegistry.class, "serverbound", StateRegistry.PacketRegistry.class);
 
       PLAY_CLIENTBOUND_REGISTRY = (StateRegistry.PacketRegistry) CLIENTBOUND_REGISTRY_GETTER.invokeExact(StateRegistry.PLAY);
       PLAY_SERVERBOUND_REGISTRY = (StateRegistry.PacketRegistry) SERVERBOUND_REGISTRY_GETTER.invokeExact(StateRegistry.PLAY);
@@ -122,12 +122,12 @@ public class LimboProtocol {
       LIMBO_SERVERBOUND_REGISTRY = (StateRegistry.PacketRegistry) SERVERBOUND_REGISTRY_GETTER.invokeExact(LIMBO_STATE_REGISTRY);
 
       REGISTER_METHOD = MethodHandles.privateLookupIn(StateRegistry.PacketRegistry.class, MethodHandles.lookup())
-              .findVirtual(StateRegistry.PacketRegistry.class, "register",
-                      MethodType.methodType(void.class, Class.class, Supplier.class, StateRegistry.PacketMapping[].class));
+          .findVirtual(StateRegistry.PacketRegistry.class, "register",
+              MethodType.methodType(void.class, Class.class, Supplier.class, StateRegistry.PacketMapping[].class));
 
       PACKET_MAPPING_CONSTRUCTOR = MethodHandles.privateLookupIn(StateRegistry.PacketRegistry.class, MethodHandles.lookup())
-              .findConstructor(StateRegistry.PacketMapping.class,
-                      MethodType.methodType(void.class, int.class, ProtocolVersion.class, ProtocolVersion.class, boolean.class));
+          .findConstructor(StateRegistry.PacketMapping.class,
+              MethodType.methodType(void.class, int.class, ProtocolVersion.class, ProtocolVersion.class, boolean.class));
     } catch (Throwable e) {
       throw new ReflectionException(e);
     }
@@ -147,7 +147,7 @@ public class LimboProtocol {
     // Overlay packets from PLAY state registry.
     // P.S. I hate it when someone uses var in code, but there I had no choice.
     var playProtocolRegistryVersions =
-            (Map<ProtocolVersion, StateRegistry.PacketRegistry.ProtocolRegistry>) VERSIONS_GETTER.invokeExact(playRegistry);
+        (Map<ProtocolVersion, StateRegistry.PacketRegistry.ProtocolRegistry>) VERSIONS_GETTER.invokeExact(playRegistry);
     Map<ProtocolVersion, StateRegistry.PacketRegistry.ProtocolRegistry> versions = new EnumMap<>(ProtocolVersion.class);
     for (ProtocolVersion version : ProtocolVersion.values()) {
       if (!version.isLegacy() && !version.isUnknown()) {
@@ -417,16 +417,16 @@ public class LimboProtocol {
         createMapping(0x19, ProtocolVersion.MINECRAFT_1_20_2, false)
     );
     register(LIMBO_STATE_REGISTRY, PacketDirection.SERVERBOUND,
-            TeleportConfirmPacket.class, TeleportConfirmPacket::new,
-            createMapping(0x00, ProtocolVersion.MINECRAFT_1_9, false)
+        TeleportConfirmPacket.class, TeleportConfirmPacket::new,
+        createMapping(0x00, ProtocolVersion.MINECRAFT_1_9, false)
     );
 
     register(PLAY_SERVERBOUND_REGISTRY,
-            PlayerChatSessionPacket.class, PlayerChatSessionPacket::new,
-            createMapping(0x20, ProtocolVersion.MINECRAFT_1_19_3, false),
-            createMapping(0x06, ProtocolVersion.MINECRAFT_1_19_4, false),
-            createMapping(0x06, ProtocolVersion.MINECRAFT_1_20, false),
-            createMapping(0x06, ProtocolVersion.MINECRAFT_1_20_2, false) // 1.20.2
+        PlayerChatSessionPacket.class, PlayerChatSessionPacket::new,
+        createMapping(0x20, ProtocolVersion.MINECRAFT_1_19_3, false),
+        createMapping(0x06, ProtocolVersion.MINECRAFT_1_19_4, false),
+        createMapping(0x06, ProtocolVersion.MINECRAFT_1_20, false),
+        createMapping(0x06, ProtocolVersion.MINECRAFT_1_20_2, false) // 1.20.2
     );
   }
 
@@ -486,8 +486,8 @@ public class LimboProtocol {
           var classToId = (Object2IntMap<Class<? extends MinecraftPacket>>) PACKET_CLASS_TO_ID_GETTER.invokeExact(protocolRegistry);
           if (idToSupplier instanceof OverlayMap<?, ?> && classToId instanceof OverlayMap<?, ?>) {
             return Stream.of(
-                    (OverlayMap<?, ?>) idToSupplier,
-                    (OverlayMap<?, ?>) classToId
+                (OverlayMap<?, ?>) idToSupplier,
+                (OverlayMap<?, ?>) classToId
             );
           } else {
             return Stream.empty();
@@ -510,7 +510,7 @@ public class LimboProtocol {
   }
 
   private static StateRegistry.PacketMapping createMapping(int id, ProtocolVersion version, ProtocolVersion lastValidProtocolVersion, boolean encodeOnly)
-          throws Throwable {
+      throws Throwable {
     return (StateRegistry.PacketMapping) PACKET_MAPPING_CONSTRUCTOR.invokeExact(id, version, lastValidProtocolVersion, encodeOnly);
   }
 
