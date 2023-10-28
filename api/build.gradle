@@ -24,7 +24,7 @@ license {
   setHeader(file("HEADER.txt"))
 }
 
-task javadocJar(type: Jar) {
+tasks.register('javadocJar', Jar) {
   getArchiveClassifier().set("javadoc")
   from(javadoc)
 }
@@ -45,7 +45,7 @@ javadoc {
   }
 }
 
-task sourcesJar(type: Jar) {
+tasks.register('sourcesJar', Jar) {
   getArchiveClassifier().set("sources")
   from(sourceSets.main.getAllSource())
 }

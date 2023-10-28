@@ -53,7 +53,7 @@ license {
   setHeader(getRootProject().file("HEADER.txt"))
 }
 
-task finalize {
+tasks.register('finalize') {
   doLast {
     file("build/libs/${this.getName()}-${this.getVersion()}.jar").delete()
   }
