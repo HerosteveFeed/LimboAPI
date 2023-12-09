@@ -22,10 +22,10 @@ import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
 import com.velocitypowered.proxy.connection.MinecraftConnection;
 import com.velocitypowered.proxy.connection.client.ConnectedPlayer;
-import com.velocitypowered.proxy.protocol.ProtocolUtils;
 import com.velocitypowered.proxy.protocol.StateRegistry;
 import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItem;
 import com.velocitypowered.proxy.protocol.packet.UpsertPlayerInfo;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
 import com.velocitypowered.proxy.protocol.packet.title.GenericTitlePacket;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -232,13 +232,13 @@ public class LimboPlayerImpl implements LimboPlayer {
     {
       GenericTitlePacket packet = GenericTitlePacket.constructTitlePacket(GenericTitlePacket.ActionType.SET_TITLE, version);
 
-      packet.setComponent(ProtocolUtils.getJsonChatSerializer(version).serialize(title));
+      packet.setComponent(new ComponentHolder(version, title));
       this.writePacketAndFlush(packet);
     }
     {
       GenericTitlePacket packet = GenericTitlePacket.constructTitlePacket(GenericTitlePacket.ActionType.SET_SUBTITLE, version);
 
-      packet.setComponent(ProtocolUtils.getJsonChatSerializer(version).serialize(subtitle));
+      packet.setComponent(new ComponentHolder(version, subtitle));
       this.writePacketAndFlush(packet);
     }
     {

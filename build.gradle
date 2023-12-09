@@ -29,13 +29,17 @@ allprojects {
     mavenCentral()
     mavenLocal()
 
+    flatDir {
+      dirs("../libs")
+    }
+
     maven {
       setName("jitpack-repo")
       setUrl("https://jitpack.io")
     }
     maven {
       setName("elytrium-repo")
-      setUrl("https://maven.jnngl.me/public/")
+      setUrl("https://maven.elytrium.net/repo/")
     }
     maven {
       setName("papermc-repo")

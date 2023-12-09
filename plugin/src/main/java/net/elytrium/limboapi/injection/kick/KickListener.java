@@ -141,7 +141,7 @@ public class KickListener {
                 Component reason = status.getReasonComponent()
                     .orElse(ConnectionMessages.INTERNAL_SERVER_CONNECTION_ERROR);
                 player.handleConnectionException(res.getServer(), Disconnect.create(reason,
-                    player.getProtocolVersion()), ((ConnectionRequestResults.Impl) status).isSafe());
+                    player.getProtocolVersion(), false), ((ConnectionRequestResults.Impl) status).isSafe());
                 break;
               case SUCCESS:
                 Component requestedMessage = res.getMessageComponent();

@@ -47,6 +47,7 @@ import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItem;
 import com.velocitypowered.proxy.protocol.packet.PluginMessage;
 import com.velocitypowered.proxy.protocol.packet.Respawn;
 import com.velocitypowered.proxy.protocol.packet.UpsertPlayerInfo;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
 import com.velocitypowered.proxy.protocol.packet.config.FinishedUpdate;
 import com.velocitypowered.proxy.protocol.packet.config.RegistrySync;
 import com.velocitypowered.proxy.protocol.packet.config.StartUpdate;
@@ -467,7 +468,7 @@ public class LimboImpl implements Limbo {
       );
     } else {
       UpsertPlayerInfo.Entry playerInfoEntry = new UpsertPlayerInfo.Entry(player.getUniqueId());
-      playerInfoEntry.setDisplayName(Component.text(player.getUsername()));
+      playerInfoEntry.setDisplayName(new ComponentHolder(connection.getProtocolVersion(), Component.text(player.getUsername())));
       playerInfoEntry.setGameMode(this.gameMode);
       playerInfoEntry.setProfile(player.getGameProfile());
 

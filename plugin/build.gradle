@@ -22,8 +22,10 @@ dependencies {
   implementation("net.elytrium:fastprepare:$fastPrepareVersion")
   compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
   annotationProcessor("com.velocitypowered:velocity-api:$velocityVersion")
-  compileOnly("com.velocitypowered:velocity-proxy:$velocityVersion") // From Elytrium Repo.
-  compileOnly("com.velocitypowered:velocity-native:$velocityVersion")
+  //compileOnly("com.velocitypowered:velocity-proxy:$velocityVersion") // From Elytrium Repo.
+  //compileOnly("com.velocitypowered:velocity-native:$velocityVersion")
+  compileOnly(fileTree("../libs")) // Dreeam - Velocity latest dev version
+  annotationProcessor(fileTree("../velocity-api-3.2.0-SNAPSHOT.jar"))
 
   // Needs for some velocity methods.
   compileOnly("io.netty:netty-codec:$nettyVersion")
@@ -123,6 +125,7 @@ enum MinecraftVersion {
   MINECRAFT_1_19_4(762),
   MINECRAFT_1_20(763),
   MINECRAFT_1_20_2(764)
+  //MINECRAFT_1_20_4(765)
 
   public static final List<MinecraftVersion> WORLD_VERSIONS = List.of(
     MINECRAFT_1_13,
@@ -135,7 +138,9 @@ enum MinecraftVersion {
     MINECRAFT_1_19,
     MINECRAFT_1_19_3,
     MINECRAFT_1_19_4,
-    MINECRAFT_1_20
+    MINECRAFT_1_20,
+    MINECRAFT_1_20_2
+    //MINECRAFT_1_20_4
   )
 
   public static final MinecraftVersion MINIMUM_VERSION = MINECRAFT_1_7_2

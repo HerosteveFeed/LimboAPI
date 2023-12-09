@@ -56,6 +56,7 @@ import com.velocitypowered.proxy.network.Connections;
 import com.velocitypowered.proxy.protocol.StateRegistry;
 import com.velocitypowered.proxy.protocol.packet.LegacyPlayerListItem;
 import com.velocitypowered.proxy.protocol.packet.UpsertPlayerInfo;
+import com.velocitypowered.proxy.protocol.packet.chat.ComponentHolder;
 import com.velocitypowered.proxy.protocol.packet.config.StartUpdate;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.netty.channel.ChannelPipeline;
@@ -150,7 +151,7 @@ public class LoginTasksQueue {
                   ));
                 } else if (connection.getState() == StateRegistry.PLAY) {
                   UpsertPlayerInfo.Entry playerInfoEntry = new UpsertPlayerInfo.Entry(this.player.getUniqueId());
-                  playerInfoEntry.setDisplayName(Component.text(safeGameProfile.getUsername()));
+                  playerInfoEntry.setDisplayName(new ComponentHolder(connection.getProtocolVersion(), Component.text(safeGameProfile.getUsername())));
                   playerInfoEntry.setProfile(safeGameProfile.getGameProfile());
 
                   connection.delayedWrite(new UpsertPlayerInfo(
