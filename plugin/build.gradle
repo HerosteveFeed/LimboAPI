@@ -1,18 +1,23 @@
 //file:noinspection GroovyAssignabilityCheck
 
-buildscript {
-  dependencies {
+buildscript() {
+  dependencies() {
     classpath("commons-io:commons-io:2.6")
     classpath("com.google.guava:guava:28.0-jre")
   }
 }
 
-plugins {
+plugins() {
   id("java")
   id("com.github.johnrengelman.shadow").version("8.1.1")
 }
 
-dependencies {
+compileJava() {
+  getOptions().getRelease().set(11)
+  getOptions().setEncoding("UTF-8")
+}
+
+dependencies() {
   implementation(project(":api"))
   implementation("net.elytrium.commons:config:$elytriumCommonsVersion")
   implementation("net.elytrium.commons:utils:$elytriumCommonsVersion")
@@ -36,10 +41,11 @@ dependencies {
 
   compileOnly("com.github.spotbugs:spotbugs-annotations:$spotbugsVersion")
 
+  annotationProcessor("net.java.dev.jna:jna-platform:5.13.0")
   annotationProcessor("com.github.bsideup.jabel:jabel-javac-plugin:1.0.0")
 }
 
-shadowJar {
+shadowJar() {
   getArchiveClassifier().set("")
   setArchiveFileName("limboapi-${project.version}.${archiveExtension.get()}")
 
@@ -53,7 +59,7 @@ shadowJar {
   relocate("net.elytrium.commons.config", "net.elytrium.limboapi.thirdparty.commons.config")
 }
 
-license {
+license() {
   matching(includes: ["**/mcprotocollib/**"]) {
     setHeader(getRootProject().file("HEADER_MCPROTOCOLLIB.txt"))
   }
@@ -66,7 +72,7 @@ license {
 
 tasks.register("finalize") {
   doLast {
-    file("build/libs/${this.getName()}-${this.getVersion()}.jar").delete()
+    file("build/libs/${project.name}-${project.version}.jar").delete()
   }
 }
 

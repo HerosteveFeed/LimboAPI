@@ -217,7 +217,8 @@ public class LimboAPI implements LimboFactory {
         this.compressionEnabled,
         level,
         threshold,
-        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS
+        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS,
+        true
     );
     this.configPreparedPacketFactory = new PreparedPacketFactory(
         PreparedPacketImpl::new,
@@ -225,7 +226,8 @@ public class LimboAPI implements LimboFactory {
         this.compressionEnabled,
         level,
         threshold,
-        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS
+        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS,
+        true
     );
     this.loginUncompressedPreparedPacketFactory = new PreparedPacketFactory(
         PreparedPacketImpl::new,
@@ -233,7 +235,8 @@ public class LimboAPI implements LimboFactory {
         false,
         level,
         threshold,
-        false
+        false,
+        true
     );
     this.loginPreparedPacketFactory = new PreparedPacketFactory(
         PreparedPacketImpl::new,
@@ -241,7 +244,8 @@ public class LimboAPI implements LimboFactory {
         this.compressionEnabled,
         level,
         threshold,
-        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS
+        Settings.IMP.MAIN.SAVE_UNCOMPRESSED_PACKETS,
+        true
     );
     this.reloadPreparedPacketFactory();
     this.reload();
