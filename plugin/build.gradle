@@ -13,7 +13,7 @@ plugins() {
 }
 
 compileJava() {
-  getOptions().getRelease().set(11)
+  getOptions().getRelease().set(17)
   getOptions().setEncoding("UTF-8")
 }
 
@@ -27,10 +27,8 @@ dependencies() {
   implementation("net.elytrium:fastprepare:$fastPrepareVersion")
   compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
   annotationProcessor("com.velocitypowered:velocity-api:$velocityVersion")
-  //compileOnly("com.velocitypowered:velocity-proxy:$velocityVersion") // From Elytrium Repo.
-  //compileOnly("com.velocitypowered:velocity-native:$velocityVersion")
-  compileOnly(fileTree("../libs")) // Dreeam - Velocity latest dev version
-  annotationProcessor(fileTree("../velocity-api-3.2.0-SNAPSHOT.jar"))
+  compileOnly("com.velocitypowered:velocity-proxy:$velocityVersion") // From Elytrium Repo.
+  compileOnly("com.velocitypowered:velocity-native:$velocityVersion")
 
   // Needs for some velocity methods.
   compileOnly("io.netty:netty-codec:$nettyVersion")
@@ -187,9 +185,9 @@ enum MinecraftVersion {
   }
 }
 
-project.ext.dataDirectory = new File(this.getBuildDir(), "minecraft")
+project.ext.dataDirectory = new File(project.layout.buildDirectory.asFile.get(), "minecraft")
 project.ext.manifestDir = new File(dataDirectory, "manifest.json")
-project.ext.generatedDir = new File(this.getBuildDir(), "generated/minecraft")
+project.ext.generatedDir = new File(project.layout.buildDirectory.asFile.get(), "generated/minecraft")
 
 sourceSets {
   main {
@@ -256,7 +254,7 @@ File getServerJar(String version) {
 File generateData(MinecraftVersion version) {
   File cache = getGeneratedCache(version)
   if (cache != null) {
-    return cache;
+    return cache
   }
 
   File jarFile = this.getServerJar(version.getVersionName())

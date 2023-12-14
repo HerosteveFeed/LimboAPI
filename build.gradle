@@ -24,15 +24,6 @@ allprojects() {
   repositories() {
     mavenCentral()
 
-    flatDir {
-      dirs("../libs")
-    }
-
-    maven() {
-      setName("jitpack-repo")
-      setUrl("https://jitpack.io")
-    }
-
     maven() {
       setName("elytrium-repo")
       setUrl("https://maven.elytrium.net/repo/")
@@ -40,6 +31,10 @@ allprojects() {
     maven() {
       setName("papermc-repo")
       setUrl("https://repo.papermc.io/repository/maven-public/")
+    }
+    maven() {
+      setName("sonatype-oss-snapshots1")
+      setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     }
   }
 
