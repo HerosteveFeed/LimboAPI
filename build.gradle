@@ -36,6 +36,10 @@ allprojects() {
       setName("sonatype-oss-snapshots1")
       setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     }
+    maven {
+      setName("william278Velocity")
+      setUrl("https://repo.william278.net/velocity")
+    }
   }
 
   checkstyle() {
