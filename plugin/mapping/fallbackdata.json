@@ -1,5 +1,6 @@
 {
   "MINECRAFT_1_19_4": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:suspicious_gravel": "minecraft:gravel",
     "minecraft:pitcher_crop": "minecraft:air",
     "minecraft:pitcher_plant": "minecraft:air",
@@ -7,6 +8,7 @@
     "minecraft:calibrated_sculk_sensor": "minecraft:sculk_sensor"
   },
   "MINECRAFT_1_19_3": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:cherry_planks": "minecraft:birch_planks",
     "minecraft:cherry_sapling": "minecraft:birch_sapling",
     "minecraft:suspicious_sand": "minecraft:sand",
@@ -35,6 +37,7 @@
     "minecraft:decorated_pot": "minecraft:flower_pot"
   },
   "MINECRAFT_1_19_1": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:oak_hanging_sign": "minecraft:oak_sign",
     "minecraft:spruce_hanging_sign": "minecraft:spruce_sign",
     "minecraft:birch_hanging_sign": "minecraft:birch_sign",
@@ -76,6 +79,7 @@
     "minecraft:piglin_head": "minecraft:zombie_head"
   },
   "MINECRAFT_1_18_2": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:ochre_froglight": "minecraft:sea_lantern",
     "minecraft:pearlescent_froglight": "minecraft:sea_lantern",
     "minecraft:verdant_froglight": "minecraft:sea_lantern",
@@ -113,6 +117,7 @@
     "minecraft:sculk_vein": "minecraft:air"
   },
   "MINECRAFT_1_16_4": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:copper_ore": "minecraft:iron_ore",
     "minecraft:copper_block": "minecraft:polished_granite",
     "minecraft:cut_copper": "minecraft:red_sandstone",
@@ -251,6 +256,7 @@
     "minecraft:dirt_path": "minecraft:grass_path"
   },
   "MINECRAFT_1_15_2": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:blackstone": "minecraft:stone",
     "minecraft:gilded_blackstone": "minecraft:stone",
     "minecraft:blackstone_stairs": "minecraft:stone_stairs",
@@ -336,12 +342,14 @@
     "minecraft:quartz_bricks": "minecraft:quartz_block"
   },
   "MINECRAFT_1_14_4": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:bee_nest": "minecraft:birch_planks",
     "minecraft:beehive": "minecraft:birch_planks",
     "minecraft:honeycomb_block": "minecraft:yellow_glazed_terracotta",
     "minecraft:honey_block":  "minecraft:yellow_stained_glass"
   },
   "MINECRAFT_1_13_2": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:lily_of_the_valley": "minecraft:white_tulip",
     "minecraft:potted_lily_of_the_valley": "minecraft:potted_white_tulip",
     "minecraft:composter": "minecraft:cauldron",
@@ -424,6 +432,7 @@
     "minecraft:stone_stairs": "minecraft:cobblestone_stairs"
   },
   "MINECRAFT_1_13": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:dead_horn_coral": "minecraft:air",
     "minecraft:dead_bubble_coral": "minecraft:air",
     "minecraft:dead_tube_coral": "minecraft:air",
@@ -431,6 +440,7 @@
     "minecraft:dead_fire_coral": "minecraft:air"
   },
   "MINECRAFT_1_12_2": {
+    "minecraft:trial_spawner": "minecraft:spawner",
     "minecraft:grass_path": "minecraft:dirt_path",
     "minecraft:sign": "minecraft:oak_sign",
     "minecraft:wall_sign": "minecraft:oak_wall_sign"
