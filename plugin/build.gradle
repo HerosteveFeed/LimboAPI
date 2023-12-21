@@ -648,7 +648,7 @@ tasks.register("generateMappings") {
   this.println("> Generating Minecraft data...")
 
   Map<MinecraftVersion, File> generated = Arrays.stream(MinecraftVersion.values())
-          .dropWhile({ it < MinecraftVersion.MINECRAFT_1_13 })
+          .dropWhile({ it < MinecraftVersion.MINECRAFT_1_20_4 })
           .collect(Collectors.toMap(Function.identity(), this::generateData))
 
   Map<MinecraftVersion, Object> blockReports = generated.collectEntries({ version, directory ->
@@ -658,7 +658,7 @@ tasks.register("generateMappings") {
   this.generateBlockMappings(targetDir, blockReports)
 
   Map<MinecraftVersion, Object> registriesReports = generated
-          .findAll({ it.getKey() >= MinecraftVersion.MINECRAFT_1_14 })
+          .findAll({ it.getKey() == MinecraftVersion.MINECRAFT_1_20_4 })
           .collectEntries({ version, directory ->
             [version, new JsonSlurper().parse(new File(directory, "reports/registries.json"))]
           })
