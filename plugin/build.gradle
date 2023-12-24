@@ -90,7 +90,7 @@ import java.util.function.Function
 import java.util.stream.Collectors
 
 enum MinecraftVersion {
-  MINECRAFT_1_20_3(764),
+  MINECRAFT_1_20_3(765),
   MINECRAFT_1_20_4(765)
 
   public static final List<MinecraftVersion> WORLD_VERSIONS = List.of(
@@ -98,7 +98,7 @@ enum MinecraftVersion {
     MINECRAFT_1_20_4
   )
 
-  public static final MinecraftVersion MINIMUM_VERSION = MINECRAFT_1_7_2
+  public static final MinecraftVersion MINIMUM_VERSION = MINECRAFT_1_20_3
   public static final MinecraftVersion MAXIMUM_VERSION = values()[values().length - 1]
 
   private static final Map<Integer, MinecraftVersion> PVN_MAP = new HashMap<>()
