@@ -590,20 +590,5 @@ void generateTags(File targetDir, Map<MinecraftVersion, File> tagDirs) {
   new File(targetDir, "tags.json").write(JsonOutput.prettyPrint(JsonOutput.toJson(mergedTags)), "UTF-8")
 }
 
-tasks.register("generateMappings") {
-  dependsOn(downloadManifest)
-
-  File targetDir = new File(generatedDir, "mapping")
-  targetDir.mkdirs()
-
-  this.println("> Generating Minecraft data...")
-
-  Map<MinecraftVersion, File> tags = generated
-          .collectEntries({ version, directory ->
-            [version, new File(directory, "data/minecraft/tags")]
-          })
-
-  this.generateTags(targetDir, tags)
-}
 
 processResources.dependsOn(generateMappings)
