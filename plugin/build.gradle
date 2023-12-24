@@ -167,7 +167,7 @@ enum MinecraftVersion {
   }
 
   static MinecraftVersion fromVersionName(String name) {
-    return valueOf("MINECRAFT_1_20_4")
+    return valueOf("MINECRAFT_" + name.replace('.', '_'))
   }
 
   final int protocolVersion
