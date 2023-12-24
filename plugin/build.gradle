@@ -597,10 +597,6 @@ tasks.register("generateMappings") {
   targetDir.mkdirs()
 
   this.println("> Generating Minecraft data...")
-
-  this.generateBlockMappings(targetDir, blockReports)
-
-
   this.generateRegistryMappings(targetDir, registriesReports)
 
   Map<MinecraftVersion, File> tags = generated
