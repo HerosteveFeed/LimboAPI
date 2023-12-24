@@ -541,7 +541,7 @@ void generateRegistryMappings(File targetDir, Map<MinecraftVersion, Object> regi
           .parse(new File(this.getProjectDir(), "mapping/legacy_blockentities_mapping.json"))
 
   registriesReports.forEach({ version, registries ->
-    if (version < MinecraftVersion.MINECRAFT_1_20_4) {
+    if (version < MinecraftVersion.MINECRAFT_1_19) {
       return
     }
 
